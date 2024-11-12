@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6: Holy Grail Layout</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Header Section -->
+        <header>
+            <h1>LAB-6 DO SOMETHING</h1>
+        </header>
+
+        <!-- Menu Sidebar -->
+        <aside>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main id="content">
+            <h2>Enter Numbers to Sort</h2>
+            <label for="numberInput">Enter numbers separated by commas (e.g., 5, 10, 3, 8):</label>
+            <input type="text" id="numberInput" placeholder="Enter numbers here">
+            <button id="actionButton">Sort Numbers</button>
+            <button id="refreshButton">Refresh</button>
+            <p id="output"></p>
+        </main>
+
+        <!-- Advertisement Section -->
+        <section id="advertisement">
+            <a href="https://www.amazon.com/Fossil-Quartz-Stainless-Leather-Chronograph/dp/B00AFTTQQ0/ref=sr_1_1?dib=eyJ2IjoiMSJ9.CLwx0uPeoRDpULm8ORy5a2iMqfOvgel3hP_8TtrY7IqgDJtVFcsrngJWf6jbh96yZqA3E9g-KaHVI__KdDYXLoB4Fwq3ECcUANP3nZRhMssgQ1Jgq-7LY3mKLvaq7jXJ_-9bhY-_sDJy4aPVuSbYPGTh1NudoMHRTcH3s2h7qtPPUApD63HLkvtBHMNebPbk5t5uy3A1m3Rgaa6e1dvJOj170U0uck2V5oBqGTbXRTUDbcPJ5r_bx3bo11VZf3pwrHj_b7wQLBzQEitBQwES9V4ElIWUjx9d3nXFAoAmAOY.L9uBJ8kJsK1mgVBQzYG7hnPj-L0S2nlRiZcFqdhOdC0&dib_tag=se&keywords=fossil+watch&qid=1731388405&sr=8-1" target="_blank">
+                <img src="fossil.jpg" alt="Amazon Product" />
+                <button>Buy Now on Amazon</button>
+            </a>
+        </section>
+
+        <!-- Footer Section -->
+        <footer>
+            <p>Last updated: <span id="lastModified"></span></p>
+            <p><strong>Addendum:</strong></p>
+            <p>This page was created as part of Lab 6 to implement a simple "Holy Grail" layout with a dynamic number sorting feature using JavaScript. The layout consists of a header, a sidebar menu, a main content area for interactive JavaScript functionality, an advertisement section with a clickable image leading to Amazon, and a footer that dynamically updates with the last modified date.</p>
+         
+            <p>Challenges encountered during the implementation:</p>
+            <ul>
+                <li>The first challenge was ensuring that the input values were properly validated before attempting to sort them. I had to make sure that only valid numbers would be processed, and that an appropriate error message was displayed if the user entered non-numeric data.</li>
+                <li>Another challenge was handling the dynamic updating of the last modified date in the footer. Initially, I had difficulty ensuring the date updated correctly, but this was resolved by using JavaScript to retrieve the document's last modified timestamp and displaying it in the footer.</li>
+                <li>Additionally, ensuring that the "Refresh" button cleared both the input field and the output area required some attention to make sure the page behaved as expected without reloading.</li>
+            </ul>
+            
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

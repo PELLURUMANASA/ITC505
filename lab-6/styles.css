@@ -1,0 +1,92 @@
+/* Reset some default styles */
+body, h1, h2, p, button {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-areas:
+        "header header header"
+        "menu content advertisement"
+        "footer footer footer";
+    height: 100vh;
+}
+
+header {
+    grid-area: header;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+aside {
+    grid-area: menu;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+aside ul {
+    list-style-type: none;
+}
+
+aside ul li {
+    margin-bottom: 10px;
+}
+
+aside ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#content {
+    grid-area: content;
+    padding: 20px;
+    background-color: #fff;
+}
+
+#advertisement {
+    grid-area: advertisement;
+    text-align: center;
+    padding: 20px;
+}
+
+#advertisement img {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+footer {
+    grid-area: footer;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+footer p {
+    margin: 5px;
+}
