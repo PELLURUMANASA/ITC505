@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haunted House Adventure</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+        }
+
+        #story {
+            margin: 2rem;
+            padding: 1rem;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #choices {
+            margin-top: 1rem;
+        }
+
+        button {
+            margin: 0.5rem;
+            padding: 1rem;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            margin-top: 2rem;
+            background-color: #333;
+            color: #fff;
+            padding: 0.5rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            font-weight: bold;
+        }
+
+        #addendum {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #addendum h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        #addendum p {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Haunted House Adventure</h1>
+    </header>
+
+    <div id="story">
+        <p id="story-text">You find yourself at the entrance of a spooky, abandoned house...</p>
+        <!-- Image will be inserted here -->
+        <img id="story-image" src="" alt="Story Image" style="width: 100%; max-height: 400px; object-fit: cover; margin: 20px 0;">
+        <div id="choices"></div>
+    </div>
+
+    <!-- Addendum Section -->
+    <div id="addendum">
+        <h2>Project Addendum</h2>
+        <p>This interactive "Haunted House Adventure" game was created as a web-based project using HTML, CSS, and JavaScript. The purpose of this project was to demonstrate the use of event listeners, DOM manipulation, and conditional logic to create an interactive and engaging user experience. Below are key details about the design and functionality:</p>
+        <ul>
+            <li><strong>Story Structure:</strong> The game progresses through various stages, each with its own set of choices that lead to different outcomes. The story is dynamically updated based on user input.</li>
+            <li><strong>JavaScript Functionality:</strong> JavaScript is used to manage the flow of the game, including changing the text, updating images, and handling user input. Event listeners capture user clicks on buttons and trigger the next stage of the story.</li>
+            <li><strong>CSS Design:</strong> The page is styled to create a simple and clean interface. A combination of margins, padding, and background colors is used to make the game visually appealing while ensuring clarity and usability. The responsive design adapts to different screen sizes for better accessibility.</li>
+            <li><strong>Challenges:</strong> One of the challenges encountered during development was ensuring that the game's state (current stage) is preserved and updated correctly as the user progresses through different stages. Another challenge was managing the dynamic insertion of images based on the current story stage.</li>
+            <li><strong>Future Improvements:</strong> Future improvements could include adding sound effects, animations, and transitions between stages to make the experience more immersive. Additionally, more complex branching paths and a scoring system could be implemented to enhance gameplay.</li>
+        </ul>
+    </div>
+
+    <!-- Footer section with Last Updated date -->
+    <footer>
+        <p>Last updated: <span id="lastModified"></span></p>
+    </footer>
+
+    <!-- JavaScript code -->
+    <script type="text/javascript">
+        // The story stages object with image URLs from Unsplash and Pexels
+        const storyStages = {
+            entrance: {
+                text: "You find yourself at the entrance of a spooky, abandoned house. The front door creaks open. Do you enter or walk away?",
+                choices: [
+                    { text: "Enter", nextStage: "livingRoom" },
+                    { text: "Walk Away", nextStage: "leave" }
+                ],
+                image: "entrance.png" // Image in the same folder
+            },
+            livingRoom: {
+                text: "You step inside the dusty living room. A chandelier flickers above. There's a staircase leading upstairs and a doorway to the basement. Do you go upstairs or explore the basement?",
+                choices: [
+                    { text: "Go Upstairs", nextStage: "bedroom" },
+                    { text: "Explore the Basement", nextStage: "basement" }
+                ],
+                image: "livingRoom.jpeg" // Image in the same folder
+            },
+            bedroom: {
+                text: "In the upstairs bedroom, you find an old mirror. Suddenly, you feel a presence behind you. Do you look in the mirror or hide under the bed?",
+                choices: [
+                    { text: "Look in the Mirror", nextStage: "hauntedMirror" },
+                    { text: "Hide Under the Bed", nextStage: "hiddenPassage" }
+                ],
+                image: "bedroom.jpeg" // Image in the same folder
+            },
+            basement: {
+                text: "The basement is dark and damp. You see an old book on a table and a door leading to another room. Do you read the book or open the door?",
+                choices: [
+                    { text: "Read the Book", nextStage: "cursedBook" },
+                    { text: "Open the Door", nextStage: "secretLab" }
+                ],
+                image: "basement.jpeg" // Image in the same folder
+            },
+            hiddenPassage: {
+                text: "Under the bed, you find a hidden passage. Crawling through, you end up in a strange room filled with ancient artifacts. Do you examine an artifact or try to find an exit?",
+                choices: [
+                    { text: "Examine an Artifact", nextStage: "ancientCurse" },
+                    { text: "Find an Exit", nextStage: "freedom" }
+                ],
+                image: "hiddenPassage.jpeg" // Image in the same folder
+            },
+            secretLab: {
+                text: "You enter a secret lab filled with strange potions. There's a potion labeled 'Drink Me' and a key on the table. Do you drink the potion or take the key?",
+                choices: [
+                    { text: "Drink the Potion", nextStage: "transformation" },
+                    { text: "Take the Key", nextStage: "lockedDoor" }
+                ],
+                image: "secretLab.jpeg" // Image in the same folder
+            },
+            lockedDoor: {
+                text: "Using the key, you unlock a hidden door leading outside. You're free! But you can't shake the feeling that something followed you out.",
+                choices: [
+                    { text: "Exit", nextStage: "freedom" }
+                ],
+                image: "lockedDoor.jpeg" // Image in the same folder
+            },
+            leave: {
+                text: "You decide not to enter the haunted house and walk away. Some mysteries are better left unsolved.",
+                choices: [],
+                image: "leave.jpeg" // Image in the same folder
+            },
+            hauntedMirror: {
+                text: "You look in the mirror and see a ghostly face staring back at you. You feel a chill run down your spine as the lights go out.",
+                choices: [],
+                image: "hauntedMirror.webp" // Image in the same folder
+            },
+            cursedBook: {
+                text: "The book you read curses you, and you vanish into thin air. The house claims another soul...",
+                choices: [],
+                image: "cursedBook.jpeg" // Image in the same folder
+            },
+            ancientCurse: {
+                text: "You touch the artifact and an ancient curse is unleashed. The walls of the room begin to close in on you, and you hear whispers of lost souls. Do you try to break the curse or succumb to its power?",
+                choices: [
+                    { text: "Try to Break the Curse", nextStage: "freedom" },
+                    { text: "Succumb to the Curse", nextStage: "end" }
+                ],
+                image: "ancientCurse.jpeg" // Image in the same folder
+            },
+            transformation: {
+                text: "The potion transforms you into a strange creature. You're no longer human, but free to roam the world in your new form.",
+                choices: [],
+                image: "transformation.webp" // Image in the same folder
+            },
+            freedom: {
+                text: "You manage to escape the haunted house and find safety. Congratulations, you've survived!",
+                choices: [],
+                image: "freedom.jpeg" // Image in the same folder
+            },
+            end: {
+                text: "The curse has claimed you. Your adventure ends here.",
+                choices: [],
+                image: "end.jpeg" // Image in the same folder
+            }
+        };
+
+        // Set the last updated date
+        document.getElementById("lastModified").textContent = document.lastModified;
+
+        // Initialize the story
+        let currentStage = "entrance";
+
+        function updateStory(stage) {
+            const stageData = storyStages[stage];
+            document.getElementById("story-text").textContent = stageData.text;
+            document.getElementById("story-image").src = stageData.image;
+            document.getElementById("choices").innerHTML = '';
+
+            stageData.choices.forEach(choice => {
+                const button = document.createElement("button");
+                button.textContent = choice.text;
+                button.onclick = function() {
+                    updateStory(choice.nextStage);
+                };
+                document.getElementById("choices").appendChild(button);
+            });
+        }
+
+        // Start the game
+        updateStory(currentStage);
+    </script>
+</body>
+</html>
