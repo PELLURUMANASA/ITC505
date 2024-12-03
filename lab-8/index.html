@@ -13,7 +13,7 @@
     <main>
         <!-- Form Section -->
         <section id="formSection">
-            <form id="secureForm" method="GET">
+            <form id="secureForm" method="POST">
                 <label for="firstName">First Name:</label>
                 <input type="text" id="firstName" name="firstName" required>
                 <br>
@@ -56,8 +56,80 @@
         </section>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        const formSection = document.getElementById('formSection');
+        const thankYouSection = document.getElementById('thankYouSection');
+        const secureForm = document.getElementById('secureForm');
+        const backToForm = document.getElementById('backToForm');
+
+        // Handle form submission
+        secureForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Validate first and last names do not contain numbers (prevent SQLi/XSS attack via name fields)
+            const namePattern = /^[A-Za-z\s]+$/;
+            if (!namePattern.test(firstName)) {
+                alert('First name cannot contain numbers or special characters.');
+                return;
+            }
+            if (!namePattern.test(lastName)) {
+                alert('Last name cannot contain numbers or special characters.');
+                return;
+            }
+
+            // Validate email format (prevent SQLi via email input)
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // Validate password format (XSS protection via special character check)
+            const passwordPattern = /^(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+            if (!passwordPattern.test(password)) {
+                alert('Password must be at least 8 characters long and include at least one special character.');
+                return;
+            }
+
+            // Validate password match
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            // Sanitize input (to prevent XSS attacks)
+            const sanitizedFirstName = sanitizeInput(firstName);
+            const sanitizedLastName = sanitizeInput(lastName);
+            const sanitizedEmail = sanitizeInput(email);
+            const sanitizedPassword = sanitizeInput(password);
+
+            // Show Thank You section and hide the form
+            formSection.style.display = 'none';
+            thankYouSection.style.display = 'block';
+        });
+
+        // Sanitize user input to prevent XSS attacks
+        function sanitizeInput(input) {
+            const element = document.createElement('div');
+            if (input) {
+                element.innerText = input;
+                element.textContent = input;
+            }
+            return element.innerHTML;
+        }
+
+        // Handle "Go Back to the Form" link
+        backToForm.addEventListener('click', function (event) {
+            event.preventDefault();
+            thankYouSection.style.display = 'none';
+            formSection.style.display = 'block';
+        });
+    </script>
 </body>
 </html>
-
-
