@@ -56,64 +56,7 @@
         </section>
     </footer>
 
-    <script>
-        const formSection = document.getElementById('formSection');
-        const thankYouSection = document.getElementById('thankYouSection');
-        const secureForm = document.getElementById('secureForm');
-        const backToForm = document.getElementById('backToForm');
-
-        // Handle form submission
-        secureForm.addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent actual form submission
-
-            const firstName = document.getElementById('firstName').value.trim();
-            const lastName = document.getElementById('lastName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            // Validate first and last names do not contain numbers
-            const namePattern = /^[A-Za-z\s]+$/;
-            if (!namePattern.test(firstName)) {
-                alert('First name cannot contain numbers.');
-                return;
-            }
-            if (!namePattern.test(lastName)) {
-                alert('Last name cannot contain numbers.');
-                return;
-            }
-
-            // Validate email format
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailPattern.test(email)) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-
-            // Validate password format
-            const passwordPattern = /^(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
-            if (!passwordPattern.test(password)) {
-                alert('Password must be at least 8 characters long and include at least one special character.');
-                return;
-            }
-
-            // Validate password match
-            if (password !== confirmPassword) {
-                alert('Passwords do not match.');
-                return;
-            }
-
-            // Show Thank You section and hide the form
-            formSection.style.display = 'none';
-            thankYouSection.style.display = 'block';
-        });
-
-        // Handle "Go Back to the Form" link
-        backToForm.addEventListener('click', function (event) {
-            event.preventDefault();
-            thankYouSection.style.display = 'none';
-            formSection.style.display = 'block';
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
+
