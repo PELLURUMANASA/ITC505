@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lights Out Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Lights Out Game</h1>
+    <div id="controls">
+        <button id="refreshButton">Refresh</button>
+        <button id="hintButton">Hint</button>
+    </div>
+    <div id="game" class="board"></div>
+<section id="addendum">
+        <h2>Addendum</h2>
+        <p><strong>Process and Creative Choices</strong></p>
+        <p>The <strong>Lights Out Game</strong> is a puzzle where the objective is to turn off all lights on a grid by clicking on them. Clicking a light toggles not only the clicked light but also its neighboring lights. This mechanic ensures that solving the puzzle requires careful strategy.</p>
+        <p><strong>Game Logic:</strong> The board is initialized as a grid of lights, each of which can either be "on" or "off." The player toggles the lights by clicking them. A <strong>Hint</strong> button has been implemented, where after 10 clicks, the game is solved automatically, and all lights are turned off. The <strong>Refresh</strong> button resets the game to its starting state with a new random configuration.</p>
+        <p><strong>Creative Choices:</strong> The board uses a <strong>grid layout</strong> to display the cells in a 5x5 grid. This grid is flexible and can be resized by adjusting the <code>rows</code> and <code>cols</code> constants. The <strong>CSS</strong> styles were chosen to create a simple and clean design. The game board is centered on the page with light gray colors for the "on" state and dark gray for the "off" state. Buttons are styled with a consistent color scheme and user-friendly spacing. The <strong>footer</strong> dynamically updates to show the last time the page was modified, ensuring that users are aware of when the content was last changed.</p>
+        <p><strong>Challenges Faced:</strong> One challenge was ensuring that the <strong>Hint</strong> button works correctly and that the board responds properly to each click. Initially, there were issues where the lights were not toggling correctly when clicked, but this was resolved by ensuring that each light and its neighbors are toggled properly in the <code>toggleLight</code> function. Another challenge was making the <strong>hint</strong> mechanism clear and functional. The hint counter tracks how many times the user has clicked the <strong>Hint</strong> button. Once the counter reaches 10, all lights turn off, and a "You win!" message is displayed. This behavior was implemented using a simple counter and condition check.</p>
+        <p><strong>Insights Gained:</strong> This project taught me how to use the DOM to dynamically create game elements like the game board and buttons. I also gained a deeper understanding of JavaScript event handling and state management within a game context.</p>
+    </section>
+    <footer>
+        <p>Last updated: 
+            <span id="lastModified"></span>
+        </p>
+    </footer>
+    <script type="text/javascript">
+        var x = document.lastModified;
+        document.getElementById('lastModified').textContent = x;
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

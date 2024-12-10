@@ -1,0 +1,104 @@
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+}
+h1 {
+    margin-top: 20px;
+    color: #333;
+    text-shadow: 1px 1px 2px #888;
+}
+#controls {
+    margin: 20px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 0 10px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px #888;
+}
+button:hover {
+    background-color: #45a049;
+}
+.board {
+    display: grid;
+    grid-template-columns: repeat(5, 60px);
+    grid-gap: 5px;
+    margin: 20px auto;
+    width: max-content;
+}
+.cell {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border: 2px solid #333;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.cell:hover {
+    box-shadow: 0 0 5px #aaa;
+}
+.is-off {
+    background-color: rgb(169, 20, 206);
+}
+footer {
+    margin-top: 20px;
+    font-size: 14px;
+}
+.hint {
+    background-color: yellow; /* Highlight color for the hint */
+    box-shadow: 0 0 10px 2px rgba(255, 255, 0, 0.8); /* Light effect around the hint */
+}
+/* Default cell styles */
+.cell {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin: 2px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Class to show lights are off */
+.is-off {
+    background-color: #333;
+}
+/* Addendum Section */
+#addendum {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+#addendum h2 {
+    color: #333;
+}
+
+#addendum p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+}
+
+#addendum strong {
+    font-weight: bold;
+}
+
+/* Footer Styles */
+footer p {
+    color: #777;
+}
